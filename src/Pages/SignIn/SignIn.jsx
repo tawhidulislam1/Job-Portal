@@ -1,23 +1,25 @@
 import Lottie from "lottie-react";
-import registerAnimationData from "../../assets/register.json"
+import registerAnimationData from "../../assets/login.json"
 import { useContext } from "react";
 import AuthContext from "../../Context/AuthContext";
 
-const Register = () => {
-    const {createUser} = useContext(AuthContext)
-    const handleRegister = e => {
+const SignIn = () => {
+    const { logInUser } = useContext(AuthContext)
+    const handleLogin = e => {
         e.preventDefault()
         const form = e.target;
         const email = form.email.value;
         const password = form.password.value;
         console.log(email, password);
-        createUser(email,password)
-        .then(result =>{
-            console.log(result);
-        })
-        .catch(error =>{
-            console.log(error);
-        })
+
+        logInUser(email, password)
+            .then(result => {
+                console.log("login user",result.user);
+            })
+            .catch(error => {
+                console.log(error);
+            })
+
     }
     return (
         <div className="hero bg-base-200 min-h-screen">
@@ -26,9 +28,9 @@ const Register = () => {
                     <Lottie animationData={registerAnimationData}></Lottie>
                 </div>
                 <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
-                    <h1 className="mt-5 pl-10 text-4xl font-bold">Register Now!</h1>
+                    <h1 className="mt-5 pl-10 text-4xl font-bold">Login Now!</h1>
 
-                    <form className="card-body" onSubmit={handleRegister}>
+                    <form className="card-body" onSubmit={handleLogin}>
                         <div className="form-control">
                             <label className="label">
                                 <span className="label-text">Email</span>
@@ -40,10 +42,12 @@ const Register = () => {
                                 <span className="label-text">Password</span>
                             </label>
                             <input type="password" name="password" placeholder="password" className="input input-bordered" required />
-                           
+                            <label className="label">
+                                <a href="#" className="label-text-alt link link-hover">Forgot password?</a>
+                            </label>
                         </div>
                         <div className="form-control mt-6">
-                            <button className="btn btn-primary">Register</button>
+                            <button className="btn btn-primary">Login</button>
                         </div>
                     </form>
                 </div>
@@ -52,4 +56,4 @@ const Register = () => {
     );
 };
 
-export default Register;
+export default SignIn;
