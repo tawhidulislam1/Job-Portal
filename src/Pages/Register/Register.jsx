@@ -2,22 +2,23 @@ import Lottie from "lottie-react";
 import registerAnimationData from "../../assets/register.json"
 import { useContext } from "react";
 import AuthContext from "../../Context/AuthContext";
+import ShareSocial from "../Shared/ShareSocial/ShareSocial";
 
 const Register = () => {
-    const {createUser} = useContext(AuthContext)
+    const { createUser } = useContext(AuthContext)
     const handleRegister = e => {
         e.preventDefault()
         const form = e.target;
         const email = form.email.value;
         const password = form.password.value;
         console.log(email, password);
-        createUser(email,password)
-        .then(result =>{
-            console.log(result);
-        })
-        .catch(error =>{
-            console.log(error);
-        })
+        createUser(email, password)
+            .then(result => {
+                console.log(result);
+            })
+            .catch(error => {
+                console.log(error);
+            })
     }
     return (
         <div className="hero bg-base-200 min-h-screen">
@@ -40,12 +41,13 @@ const Register = () => {
                                 <span className="label-text">Password</span>
                             </label>
                             <input type="password" name="password" placeholder="password" className="input input-bordered" required />
-                           
+
                         </div>
                         <div className="form-control mt-6">
                             <button className="btn btn-primary">Register</button>
                         </div>
                     </form>
+                    <ShareSocial></ShareSocial>
                 </div>
             </div>
         </div>
