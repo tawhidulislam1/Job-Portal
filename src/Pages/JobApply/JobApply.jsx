@@ -61,7 +61,7 @@ const JobApply = () => {
                     <label className="label">
                         <span className="label-text">Resume Url</span>
                     </label>
-                    <input type="url" name="resume" placeholder="Github Url" className="input input-bordered" required />
+                    <input type="url" name="resume" placeholder="Resume Url" className="input input-bordered" required />
                 </div>
                 <div className="form-control mt-6">
                     <button className="btn btn-primary">Login</button>
