@@ -3,12 +3,13 @@ import registerAnimationData from "../../assets/login.json"
 import { useContext } from "react";
 import AuthContext from "../../Context/AuthContext";
 import { useLocation, useNavigate } from "react-router-dom";
+import axios from "axios";
 
 const SignIn = () => {
     const { logInUser } = useContext(AuthContext)
     const location = useLocation()
     const navigate = useNavigate()
-    const forms = location.state || '/'; 
+    const forms = location.state || '/';
     const handleLogin = e => {
         e.preventDefault()
         const form = e.target;
@@ -18,8 +19,13 @@ const SignIn = () => {
 
         logInUser(email, password)
             .then(result => {
-                console.log("login user",result.user);
-                navigate(forms)
+                console.log("login user", result.user);
+                const user = { email: email }
+                axios.post("http://localhost:5000/jwt", user , {withCredentials:true})
+                    .then(res => {
+                        console.log(res.data);
+                    })
+                // navigate(forms)
             })
             .catch(error => {
                 console.log(error);
