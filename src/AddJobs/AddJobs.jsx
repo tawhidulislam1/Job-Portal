@@ -37,7 +37,7 @@ const AddJobs = () => {
                         showConfirmButton: false,
                         timer: 1500
                     });
-                    navigate('/my-application')
+                    navigate('/posted-jobs')
                 }
             })
     }

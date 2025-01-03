@@ -14,7 +14,6 @@ const MyApplication = () => {
     }, [user.email])
     return (
         <div>
-            <h3>total data {jobs.length}</h3>
             <div className="overflow-x-auto">
                 <table className="table">
                     {/* head */}
